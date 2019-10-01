@@ -18,4 +18,8 @@ public class MainActivity extends AppCompatActivity {
         Intent registrar = new Intent(this, registro.class);
         startActivity(registrar);
     }
+    public void Acceder (View view){
+        Intent Acer = new Intent(this, Main2Activity.class);
+        startActivity(Acer);
+    }
 }
