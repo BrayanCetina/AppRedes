@@ -1,5 +1,6 @@
 package com.example.redes;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -60,5 +61,10 @@ public class Main2Activity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+    public void RegistrarMain2 (View view){
+        Intent registrar = new Intent(this, registro.class);
+        startActivity(registrar);
     }
 }
