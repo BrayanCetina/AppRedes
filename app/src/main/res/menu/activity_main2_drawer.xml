@@ -18,7 +18,7 @@
             android:title="Contrato" />
         <item
             android:id="@+id/nav_tools"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/per"
             android:title="Perfil" />
     </group>
 
@@ -26,12 +26,12 @@
         <menu>
             <item
                 android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Acerque de" />
+                android:icon="@drawable/about"
+                android:title="Acerca de" />
             <item
                 android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Comentarios" />
+                android:icon="@drawable/ayu"
+                android:title="Ayuda" />
         </menu>
     </item>
 
