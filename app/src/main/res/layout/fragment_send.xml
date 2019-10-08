@@ -102,7 +102,7 @@
         android:id="@+id/textView15"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Descripsion:"
+        android:text="Descripción"
         app:layout_constraintBottom_toTopOf="@+id/editText11"
         app:layout_constraintEnd_toStartOf="@+id/textView14"
         app:layout_constraintStart_toStartOf="@+id/textView14"
