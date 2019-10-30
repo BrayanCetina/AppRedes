@@ -61,7 +61,7 @@ public class SesionFragment extends Fragment implements Response.Listener<JSONOb
 
     @Override
     public void onResponse(JSONObject response) {
-        Toast.makeText(getContext(),"No se pudo conectar "+cajaUser.toString(),Toast.LENGTH_LONG).show();
+        Toast.makeText(getContext(),"Se ha encontrado "+cajaUser.toString(),Toast.LENGTH_LONG).show();
         User usuario=new User();
         JSONArray jsonArray=response.optJSONArray("datos");
         JSONObject jsonObject=null;
