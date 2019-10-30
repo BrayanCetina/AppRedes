@@ -1,17 +1,32 @@
 package com.example.redes;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.android.volley.Response;
+
 public class MainActivity extends AppCompatActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
     }
 
     public void Registrar (View view){
@@ -19,7 +34,8 @@ public class MainActivity extends AppCompatActivity {
         startActivity(registrar);
     }
     public void Acceder (View view){
-        Intent Acer = new Intent(this, Main2Activity.class);
-        startActivity(Acer);
+        FragmentManager fm = getSupportFragmentManager();
+        fm.beginTransaction().replace(R.id.pantalla, new SesionFragment()).commit();
+
     }
 }

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.redes">
+<uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -16,15 +17,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".portada" />
         <activity
             android:name=".Main2Activity"
-            android:label="@string/title_activity_main2"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".MainMenuNa"
-            android:label="@string/title_activity_main_menu_na"
-            android:theme="@style/AppTheme.NoActionBar" />
+
         <activity android:name=".registro" />
         <activity android:name=".MainActivity">
         </activity>
