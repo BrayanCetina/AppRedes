@@ -12,17 +12,24 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.JsonRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import com.example.redes.encrip;
+
+import java.lang.reflect.Method;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class SesionFragment extends Fragment implements Response.Listener<JSONObject>, Response.ErrorListener{
@@ -62,7 +69,6 @@ public class SesionFragment extends Fragment implements Response.Listener<JSONOb
 
     @Override
     public void onResponse(JSONObject response) {
-        Toast.makeText(getContext(),"Se ha encontrado "+txtUser.toString(),Toast.LENGTH_LONG).show();
         User usuario=new User();
         JSONArray jsonArray=response.optJSONArray("datos");
         JSONObject jsonObject=null;
@@ -79,10 +85,25 @@ public class SesionFragment extends Fragment implements Response.Listener<JSONOb
         startActivity(menu);
 
 
+
     }
     public void iniciarSesion(){
-        String url="https://evidential-tubing.000webhostapp.com/usuario_cliente.php?user="+txtUser.getText().toString()+"&pwd="+txtPwd.getText().toString();
-        jrq =new JsonObjectRequest(Request.Method.GET, url, null, this, this);
+        encrip eso=new encrip();
+        String user = eso.MD5(txtUser.getText().toString());
+        String pass = eso.MD5(txtPwd.getText().toString());
+        String url="https://evidential-tubing.000webhostapp.com/usuario_cliente.php";
+        //jrq =new JsonObjectRequest(Request.Method.GET, url, null, this, this);
+        JSONObject request = new JSONObject();
+        try
+        {
+            request.put("user", txtUser.getText().toString());
+            request.put("pwd", txtPwd.getText().toString());
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+        jrq =new JsonObjectRequest(Request.Method.POST, url,request, this                       , this);
         rq.add(jrq);
     }
 }
