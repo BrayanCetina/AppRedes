@@ -32,12 +32,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class SesionFragment extends Fragment implements Response.Listener<JSONObject>, Response.ErrorListener{
+public class SesionFragment extends Fragment {
 
 
 
-    RequestQueue rq;
-    JsonRequest jrq;
+
     EditText txtUser, txtPwd;
     Button btnSesion;
     @Override
@@ -49,7 +48,6 @@ public class SesionFragment extends Fragment implements Response.Listener<JSONOb
         txtUser = (EditText) vista.findViewById(R.id.txtUser);
         txtPwd = (EditText) vista.findViewById(R.id.txtPwd);
         btnSesion=(Button) vista.findViewById(R.id.btnSesion);
-        rq= Volley.newRequestQueue(getContext());
         btnSesion.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -61,49 +59,40 @@ public class SesionFragment extends Fragment implements Response.Listener<JSONOb
     }
 
 
-
-    @Override
-    public void onErrorResponse(VolleyError error) {
-        Toast.makeText(getContext(),"No se pudo conectar"+error.toString(),Toast.LENGTH_LONG).show();
-    }
-
-    @Override
-    public void onResponse(JSONObject response) {
-        User usuario=new User();
-        JSONArray jsonArray=response.optJSONArray("datos");
-        JSONObject jsonObject=null;
-        try {
-            jsonObject=jsonArray.getJSONObject(0);
-            usuario.setUser(jsonObject.optString("user"));
-            usuario.setUser(jsonObject.optString("pwd"));
-            usuario.setUser(jsonObject.optString("names"));
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        Intent menu=new Intent(getContext(),Main2Activity.class);
-        startActivity(menu);
-
-
-
-    }
     public void iniciarSesion(){
         encrip eso=new encrip();
         String user = eso.MD5(txtUser.getText().toString());
         String pass = eso.MD5(txtPwd.getText().toString());
         String url="https://evidential-tubing.000webhostapp.com/usuario_cliente.php";
-        //jrq =new JsonObjectRequest(Request.Method.GET, url, null, this, this);
-        JSONObject request = new JSONObject();
-        try
-        {
-            request.put("user", txtUser.getText().toString());
-            request.put("pwd", txtPwd.getText().toString());
-        }
-        catch(Exception e)
-        {
-            e.printStackTrace();
-        }
-        jrq =new JsonObjectRequest(Request.Method.POST, url,request, this                       , this);
-        rq.add(jrq);
+        StringRequest jrq =new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                if (response.isEmpty()){
+                    Intent menu=new Intent(getContext(),Main2Activity.class);
+                    startActivity(menu);
+
+                }else{
+                    Toast.makeText(getContext(), "correo o password incorrecto", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getContext(),"No se pudo conectar"+error.toString(),Toast.LENGTH_LONG).show();
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> parametros=new HashMap<>();
+                parametros.put("user",txtUser.getText().toString());
+                parametros.put("pwd",txtUser.getText().toString());
+                return parametros;
+            }
+        };
+        RequestQueue requestQueue=Volley.newRequestQueue(getContext());
+        requestQueue.add(jrq);
     }
+
+
 }
