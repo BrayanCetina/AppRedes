@@ -11,6 +11,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.redes.encrip;
 
 import android.widget.TextView;
 import android.widget.Toast;
@@ -99,9 +100,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams()
             {
+                encrip eso = new encrip();
+                String User = eso.MD5(txtUser.toString());
+                String Pass = eso.MD5(txtPwd.toString());
                 Map<String, String> params = new HashMap<String, String>();
-                params.put("user", txtUser.getText().toString());
-                params.put("pwd", txtPwd.getText().toString());
+                params.put("user", User);
+                params.put("pwd", Pass);
                 return params;
             }
         };
