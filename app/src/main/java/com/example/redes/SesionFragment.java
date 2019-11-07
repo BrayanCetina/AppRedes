@@ -81,7 +81,7 @@ public class SesionFragment extends Fragment implements Response.Listener<JSONOb
 
     }
     public void iniciarSesion(){
-        String url="https://evidential-tubing.000webhostapp.com/usuario_cliente.php?user="+txtUser.getText().toString()+"&pwd="+txtPwd.getText().toString();
+        String url="https://evidential-tubing.000webhostapp.com/usuario_cliente.php?user="+txtUser.getText().toString()+"$pwd="+txtPwd.getText().toString();
         jrq =new JsonObjectRequest(Request.Method.GET, url, null, this, this);
         rq.add(jrq);
     }
