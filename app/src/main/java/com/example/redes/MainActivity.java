@@ -101,8 +101,8 @@ public class MainActivity extends AppCompatActivity {
             protected Map<String, String> getParams()
             {
                 encrip eso = new encrip();
-                String User = eso.MD5(txtUser.toString());
-                String Pass = eso.MD5(txtPwd.toString());
+                String User = eso.MD5(txtUser.getText().toString());
+                String Pass = eso.MD5(txtPwd.getText().toString());
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("user", User);
                 params.put("pwd", Pass);
