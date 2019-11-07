@@ -41,52 +41,24 @@ public class MainActivity extends AppCompatActivity {
         startActivity(registrar);
     }
     public void Acceder (View view){
-        //Intent Acer = new Intent(this, Main2Activity.class);
-        //startActivity(Acer);
-        IniciarSecion("https://evidential-tubing.000webhostapp.com/usuario_cliente.php");
+        //al dar click se manda al metodo iniciarsesion pasando el url
+        IniciarSecion(getString(R.string.url));
     }
 
     private void IniciarSecion(String url) {
-        //encrip eso=new encrip();
-        //String user = eso.MD5(txtUser.getText().toString());
-        //String pass = eso.MD5(txtPwd.getText().toString());
-        //String url="https://evidential-tubing.000webhostapp.com/usuario_cliente.php?user="+user+"&pwd="+pass;
-        /*Map<String, String> params = new HashMap();
-        params.put("user", txtUser.getText().toString());
-        params.put("pwd", txtPwd.getText().toString());
-        JSONObject obj=new JSONObject(params);
-        try {
-            obj.put("user",txtUser.getText().toString());
-            obj.put("pwd",txtPwd.getText().toString());
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        JsonObjectRequest jrq = new JsonObjectRequest(Request.Method.POST,url, obj,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        Toast.makeText(MainActivity.this, "se encontro", Toast.LENGTH_SHORT).show();
-                        Intent Acer = new Intent(MainActivity.this, Main2Activity.class);
-                        startActivity(Acer);
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(MainActivity.this, "no se encontro",Toast.LENGTH_LONG).show();
-                    }
-                });*/
+        //utilizamos el stringrequest donde mandamos todos los datos como el url el metodo
         StringRequest jrq = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>()
                 {
                     @Override
                     public void onResponse(String response)
                     {
+                        //si la respuesta viene vacia es que el usuario no se encuentra
                         if(response.equals("[]")){
                             Toast.makeText(getApplicationContext(), "Usuario o Contraseña incorrecto" + response, Toast.LENGTH_LONG).show();
                         }else {
-                            Toast.makeText(getApplicationContext(), "SE PUDO" + response, Toast.LENGTH_LONG).show();
+                            //si trae datos es que si existe
+                            Toast.makeText(MainActivity.this, "SE PUDO" + response, Toast.LENGTH_LONG).show();
                             Intent Acer = new Intent(MainActivity.this, Main2Activity.class);
                             startActivity(Acer);
                         }
@@ -97,20 +69,22 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error)
                     {
-                        Toast.makeText(getApplicationContext(),"ERROR"+ error.toString(), Toast.LENGTH_LONG).show();
+                        //en caso que haya error de conexion
+                        Toast.makeText(getApplicationContext(),"ERROR DE CONEXION"+ error.toString(), Toast.LENGTH_LONG).show();
                     }
                 })
         {
             @Override
             protected Map<String, String> getParams()
             {
-                encrip eso = new encrip();
-                String User = eso.MD5(txtUser.getText().toString());
+                //pasamos los parametros que iran en el metodo de post
+                encrip eso = new encrip();//agregamos un obj de la clase encrip
+                String User = eso.MD5(txtUser.getText().toString());//encriptamos el usuario y contraseña
                 String Pass = eso.MD5(txtPwd.getText().toString());
                 Map<String, String> params = new HashMap<String, String>();
-                params.put("user", User);
+                params.put("user", User);//agregamos los datos
                 params.put("pwd", Pass);
-                return params;
+                return params;//retornamos los parametros
             }
         };
         rq.add(jrq);
