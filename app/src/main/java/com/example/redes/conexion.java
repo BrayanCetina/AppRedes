@@ -32,6 +32,7 @@ public class conexion {
                             Toast.makeText(context, mensajes[1]+ response, Toast.LENGTH_LONG).show();
                             Intent Acer = new Intent(context, clas);
                             context.startActivity(Acer);
+
                         }
                     }
                 },

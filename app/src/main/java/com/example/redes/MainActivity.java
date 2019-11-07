@@ -41,6 +41,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(registrar);
     }
     public void Acceder (View view){
+        mandar();
+        //al dar click se manda al metodo iniciarsesion pasando el url
+        //IniciarSecion(getString(R.string.url));
+    }
+    private void mandar(){
         encrip eso = new encrip();
         String[] val=new String[2];
         val[0]=eso.MD5(txtUser.getText().toString());
@@ -48,14 +53,12 @@ public class MainActivity extends AppCompatActivity {
         String[] key=new String[2];
         key[0]="user";
         key[1]="pwd";
-        String[] mensajes=new String[2];
+        String[] mensajes=new String[3];
         mensajes[0]="Usuario o Contraseña incorrecto";
         mensajes[1]="SE PUDO";
         mensajes[2]="ERROR EN LA CONEXION";
         conexion con=new conexion();
         con.IniciarSecion(getString(R.string.url)+"usuario_cliente.php",this,Main2Activity.class,val,key,mensajes);
-        //al dar click se manda al metodo iniciarsesion pasando el url
-        //IniciarSecion(getString(R.string.url));
     }
 
     private void IniciarSecion(String url) {
