@@ -17,6 +17,9 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class MainActivity extends AppCompatActivity {
 
     TextView txtUser,txtPwd;
@@ -46,13 +49,17 @@ public class MainActivity extends AppCompatActivity {
         //String user = eso.MD5(txtUser.getText().toString());
         //String pass = eso.MD5(txtPwd.getText().toString());
         //String url="https://evidential-tubing.000webhostapp.com/usuario_cliente.php?user="+user+"&pwd="+pass;
-        JSONObject obj=new JSONObject();
-        try {
+        Map<String, String> params = new HashMap();
+        params.put("user", txtUser.getText().toString());
+        params.put("pwd", txtPwd.getText().toString());
+        JSONObject obj=new JSONObject(params);
+        /*try {
             obj.put("user",txtUser.getText().toString());
             obj.put("pwd",txtPwd.getText().toString());
         } catch (JSONException e) {
             e.printStackTrace();
-        }
+        }*/
+
         JsonObjectRequest jrq = new JsonObjectRequest(Request.Method.POST,url, obj,
                 new Response.Listener<JSONObject>() {
                     @Override
