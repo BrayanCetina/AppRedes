@@ -21,10 +21,5 @@
     <string name="title_activity_main2">Main2Activity</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="title_fragment">Iniciar</string>
-    <string name="title_user">Usuario</string>
-    <string name="title_pwd">Contraseña</string>
-    <string name="title_boton">Iniciar</string>
-
-
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
