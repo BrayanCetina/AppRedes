@@ -82,7 +82,9 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(String response)
                     {
-                        Toast.makeText(getApplicationContext(), response, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "SE PUDO"+response, Toast.LENGTH_LONG).show();
+                        Intent Acer = new Intent(MainActivity.this, Main2Activity.class);
+                        startActivity(Acer);
                     }
                 },
                 new Response.ErrorListener()
@@ -90,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error)
                     {
-                        Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(),"ERROR"+ error.toString(), Toast.LENGTH_LONG).show();
                     }
                 })
         {
