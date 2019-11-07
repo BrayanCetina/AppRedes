@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         mensajes[1]="BIENVENIDO";
         mensajes[2]="ERROR EN LA CONEXION";
         conexion con=new conexion();//CREAMOS UN OBJETO DE LA CLASE CONEXION
-        //MANDAMOS TODO AL METODO CONEXION
+        //MANDAMOS TOd0 AL METODO CONEXION
         con.Conexion(getString(R.string.url)+"usuario_cliente.php",this,Main2Activity.class,val,key,mensajes);
     }
 }
