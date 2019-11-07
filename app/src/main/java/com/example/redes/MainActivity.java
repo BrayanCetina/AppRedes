@@ -57,8 +57,9 @@ public class MainActivity extends AppCompatActivity {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-
                         Toast.makeText(MainActivity.this, "se encontro", Toast.LENGTH_SHORT).show();
+                        Intent Acer = new Intent(MainActivity.this, Main2Activity.class);
+                        startActivity(Acer);
                     }
                 },
                 new Response.ErrorListener() {
