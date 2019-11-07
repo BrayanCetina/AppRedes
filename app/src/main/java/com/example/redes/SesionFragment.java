@@ -1,6 +1,5 @@
 package com.example.redes;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -31,19 +30,19 @@ public class SesionFragment extends Fragment implements Response.Listener<JSONOb
 
     RequestQueue rq;
     JsonRequest jrq;
-    EditText txtUser, txtPwd;
-    Button btnSesion;
+    EditText cajaUser, cajaPwd;
+    Button btnConsultar;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         //return inflater.inflate(R.layout.fragment_sesion, container, false);
         View vista= inflater.inflate(R.layout.fragment_sesion, container, false);
-        txtUser = (EditText) vista.findViewById(R.id.txtUser);
-        txtPwd = (EditText) vista.findViewById(R.id.txtPwd);
-        btnSesion=(Button) vista.findViewById(R.id.btnSesion);
+        cajaUser = (EditText) vista.findViewById(R.id.txtUser);
+        cajaPwd = (EditText) vista.findViewById(R.id.txtPwd);
+        btnConsultar=(Button) vista.findViewById(R.id.btnSesion);
         rq= Volley.newRequestQueue(getContext());
-        btnSesion.setOnClickListener(new View.OnClickListener(){
+        btnConsultar.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 iniciarSesion();
@@ -62,7 +61,7 @@ public class SesionFragment extends Fragment implements Response.Listener<JSONOb
 
     @Override
     public void onResponse(JSONObject response) {
-        Toast.makeText(getContext(),"Se ha encontrado "+txtUser.toString(),Toast.LENGTH_LONG).show();
+        Toast.makeText(getContext(),"Se ha encontrado "+cajaUser.toString(),Toast.LENGTH_LONG).show();
         User usuario=new User();
         JSONArray jsonArray=response.optJSONArray("datos");
         JSONObject jsonObject=null;
@@ -75,13 +74,11 @@ public class SesionFragment extends Fragment implements Response.Listener<JSONOb
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        Intent menu=new Intent(getContext(),Main2Activity.class);
-        startActivity(menu);
 
 
     }
     public void iniciarSesion(){
-        String url="https://evidential-tubing.000webhostapp.com/usuario_cliente.php?user="+txtUser.getText().toString()+"$pwd="+txtPwd.getText().toString();
+        String url="https://evidential-tubing.000webhostapp.com/usuario_cliente.php?user="+cajaUser.getText().toString()+"$pwd="+cajaPwd.getText().toString();
         jrq =new JsonObjectRequest(Request.Method.GET, url, null, this, this);
         rq.add(jrq);
     }
