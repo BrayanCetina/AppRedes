@@ -83,9 +83,13 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(String response)
                     {
-                        Toast.makeText(getApplicationContext(), "SE PUDO"+response, Toast.LENGTH_LONG).show();
-                        Intent Acer = new Intent(MainActivity.this, Main2Activity.class);
-                        startActivity(Acer);
+                        if(response.equals("[]")){
+                            Toast.makeText(getApplicationContext(), "Usuario o Contraseña incorrecto" + response, Toast.LENGTH_LONG).show();
+                        }else {
+                            Toast.makeText(getApplicationContext(), "SE PUDO" + response, Toast.LENGTH_LONG).show();
+                            Intent Acer = new Intent(MainActivity.this, Main2Activity.class);
+                            startActivity(Acer);
+                        }
                     }
                 },
                 new Response.ErrorListener()
