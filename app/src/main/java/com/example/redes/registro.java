@@ -49,8 +49,8 @@ public class registro extends AppCompatActivity {
         key[1]="User";
         key[2]="Pass";//GUARDAMOS EL KEY DE CADA VALOR A MANDAR EN FORMA DE ARREGLO
         String[] mensajes=new String[3];//MANDAREMOS LOS MENSAJES A IMPRIMIR EN FORMA DE ARREGLE
-        mensajes[0]="Datos Mal";
-        mensajes[1]="BIENVENIDO";
+        mensajes[0]="LISTO";
+        mensajes[1]="LISTO";
         mensajes[2]="ERROR EN LA CONEXION";
         conexion con=new conexion();//CREAMOS UN OBJETO DE LA CLASE CONEXION
         //MANDAMOS TOd0 AL METODO CONEXION
