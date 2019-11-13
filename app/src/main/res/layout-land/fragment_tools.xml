@@ -7,13 +7,13 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/txtApe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="1dp"
         android:text="Nombres:"
-        app:layout_constraintBottom_toBottomOf="@+id/editText6"
-        app:layout_constraintEnd_toStartOf="@+id/editText6" />
+        app:layout_constraintBottom_toBottomOf="@+id/txtNom"
+        app:layout_constraintEnd_toStartOf="@+id/txtNom" />
 
     <TextView
         android:id="@+id/textView3"
@@ -21,16 +21,16 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="1dp"
         android:text="Apellidos:"
-        app:layout_constraintBottom_toBottomOf="@+id/txtFolio"
-        app:layout_constraintEnd_toStartOf="@+id/txtFolio" />
+        app:layout_constraintBottom_toBottomOf="@+id/txtApe"
+        app:layout_constraintEnd_toStartOf="@+id/txtApe" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Correo:"
-        app:layout_constraintBottom_toBottomOf="@+id/txtUser"
-        app:layout_constraintEnd_toStartOf="@+id/txtUser" />
+        app:layout_constraintBottom_toBottomOf="@+id/txtCorreo"
+        app:layout_constraintEnd_toStartOf="@+id/txtCorreo" />
 
     <TextView
         android:id="@+id/textView5"
@@ -51,14 +51,14 @@
         app:layout_constraintEnd_toStartOf="@+id/txtPass2" />
 
     <EditText
-        android:id="@+id/txtUser"
+        android:id="@+id/txtCorreo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:ems="10"
         android:inputType="textEmailAddress"
         app:layout_constraintStart_toEndOf="@+id/textView3"
-        app:layout_constraintTop_toBottomOf="@+id/txtFolio" />
+        app:layout_constraintTop_toBottomOf="@+id/txtApe" />
 
     <EditText
         android:id="@+id/txtPass1"
@@ -81,10 +81,10 @@
         android:inputType="textPassword"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtUser" />
+        app:layout_constraintTop_toBottomOf="@+id/txtCorreo" />
 
     <EditText
-        android:id="@+id/editText6"
+        android:id="@+id/txtNom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="26dp"
@@ -95,14 +95,14 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/txtFolio"
+        android:id="@+id/txtApe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
         android:ems="10"
         android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="@+id/editText6"
-        app:layout_constraintTop_toBottomOf="@+id/editText6" />
+        app:layout_constraintStart_toStartOf="@+id/txtNom"
+        app:layout_constraintTop_toBottomOf="@+id/txtNom" />
 
     <Button
         android:id="@+id/buttonaPerfilAceptar"

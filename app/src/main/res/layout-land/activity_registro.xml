@@ -14,20 +14,20 @@
       android:layout_marginTop="5dp"
       android:layout_marginBottom="10dp"
       app:layout_constraintBottom_toTopOf="@+id/txtPass1"
-      app:layout_constraintEnd_toEndOf="@+id/editText6"
-      app:layout_constraintStart_toEndOf="@+id/editText6"
+      app:layout_constraintEnd_toEndOf="@+id/txtNom"
+      app:layout_constraintStart_toEndOf="@+id/txtNom"
       app:layout_constraintTop_toTopOf="parent"
       app:srcCompat="@mipmap/ic_launcher" />
 
   <TextView
-      android:id="@+id/textView2"
+      android:id="@+id/txtApe"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_marginEnd="12dp"
       android:layout_marginBottom="1dp"
       android:text="Nombres:"
-      app:layout_constraintBottom_toBottomOf="@+id/editText6"
-      app:layout_constraintEnd_toStartOf="@+id/editText6" />
+      app:layout_constraintBottom_toBottomOf="@+id/txtNom"
+      app:layout_constraintEnd_toStartOf="@+id/txtNom" />
 
   <TextView
       android:id="@+id/textView3"
@@ -45,8 +45,8 @@
       android:layout_height="wrap_content"
       android:layout_marginEnd="28dp"
       android:text="Correo:"
-      app:layout_constraintBottom_toBottomOf="@+id/txtUser"
-      app:layout_constraintEnd_toStartOf="@+id/txtUser" />
+      app:layout_constraintBottom_toBottomOf="@+id/txtCorreo"
+      app:layout_constraintEnd_toStartOf="@+id/txtCorreo" />
 
   <TextView
       android:id="@+id/textView5"
@@ -66,7 +66,7 @@
       app:layout_constraintEnd_toStartOf="@+id/txtPass2" />
 
   <EditText
-      android:id="@+id/txtUser"
+      android:id="@+id/txtCorreo"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_marginStart="12dp"
@@ -83,9 +83,9 @@
       android:layout_marginEnd="27dp"
       android:ems="10"
       android:inputType="textPassword"
-      app:layout_constraintBottom_toBottomOf="@+id/editText6"
+      app:layout_constraintBottom_toBottomOf="@+id/txtNom"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintTop_toTopOf="@+id/editText6" />
+      app:layout_constraintTop_toTopOf="@+id/txtNom" />
 
   <EditText
       android:id="@+id/txtPass2"
@@ -98,24 +98,24 @@
       app:layout_constraintTop_toBottomOf="@+id/txtPass1" />
 
   <EditText
-      android:id="@+id/editText6"
+      android:id="@+id/txtNom"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_marginBottom="9dp"
       android:ems="10"
       android:inputType="textPersonName"
-      app:layout_constraintBottom_toTopOf="@+id/txtFolio"
-      app:layout_constraintStart_toStartOf="@+id/txtFolio" />
+      app:layout_constraintBottom_toTopOf="@+id/txtApe"
+      app:layout_constraintStart_toStartOf="@+id/txtApe" />
 
   <EditText
-      android:id="@+id/txtFolio"
+      android:id="@+id/txtApe"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_marginBottom="9dp"
       android:ems="10"
       android:inputType="textPersonName"
-      app:layout_constraintBottom_toTopOf="@+id/txtUser"
-      app:layout_constraintStart_toStartOf="@+id/txtUser" />
+      app:layout_constraintBottom_toTopOf="@+id/txtCorreo"
+      app:layout_constraintStart_toStartOf="@+id/txtCorreo" />
 
   <Button
       android:id="@+id/button1"

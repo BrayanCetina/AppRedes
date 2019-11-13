@@ -4,23 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
-import com.example.redes.encrip;
 
 import android.widget.TextView;
-import android.widget.Toast;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        txtUser=findViewById(R.id.txtUser);
+        txtUser=findViewById(R.id.txtCorreo);
         txtPwd=findViewById(R.id.txtPwd);
     }
 
@@ -41,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     public void Acceder (View view){
         mandar();
     }
-    private void mandar(){
+    public void mandar(){
         encrip eso = new encrip();
         String[] val=new String[2];
         val[0]=eso.MD5(txtUser.getText().toString());//ENCRIPTAMOS LOS VALORES QUE EL USUARIO AGREGE
@@ -55,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         mensajes[2]="ERROR EN LA CONEXION";
         conexion con=new conexion();//CREAMOS UN OBJETO DE LA CLASE CONEXION
         //MANDAMOS TOd0 AL METODO CONEXION
-        con.Conexion(getString(R.string.url)+"usuario_cliente.php",this,Main2Activity.class,val,key,mensajes);
+        con.Conexion(getString(R.string.url)+"usuario_cliente.php",this,Main2Activity.class,val,key,mensajes,true);
+
     }
 }

@@ -14,13 +14,13 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="221dp"
         android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/txtUser"
+        app:layout_constraintBottom_toTopOf="@+id/txtCorreo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@mipmap/ic_launcher" />
 
     <EditText
-        android:id="@+id/txtUser"
+        android:id="@+id/txtCorreo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
@@ -39,8 +39,8 @@
         android:ems="10"
         android:inputType="textPassword"
         app:layout_constraintBottom_toTopOf="@+id/button6"
-        app:layout_constraintStart_toStartOf="@+id/txtUser"
-        app:layout_constraintTop_toBottomOf="@+id/txtUser" />
+        app:layout_constraintStart_toStartOf="@+id/txtCorreo"
+        app:layout_constraintTop_toBottomOf="@+id/txtCorreo" />
 
     <Button
         android:id="@+id/button6"

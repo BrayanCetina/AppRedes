@@ -19,8 +19,8 @@ public class registro extends AppCompatActivity {
         //instanciamos los datos
         Pass1=findViewById(R.id.txtPass1);
         Pass2=findViewById(R.id.txtPass2);
-        Folio=findViewById(R.id.txtFolio);
-        User=findViewById(R.id.txtUser);
+        Folio=findViewById(R.id.txtApe);
+        User=findViewById(R.id.txtCorreo);
     }
     public void RegistrarNuevoUsuario (View view){
         if (!User.getText().toString().equals("") && !Folio.getText().toString().equals("") && !Pass1.getText().toString().equals("") && !Pass2.getText().toString().equals("")){
@@ -54,6 +54,6 @@ public class registro extends AppCompatActivity {
         mensajes[2]="ERROR EN LA CONEXION";
         conexion con=new conexion();//CREAMOS UN OBJETO DE LA CLASE CONEXION
         //MANDAMOS TOd0 AL METODO CONEXION
-        con.Conexion(getString(R.string.url)+"registro_cliente.php",this,MainActivity.class,val,key,mensajes);
+        con.Conexion(getString(R.string.url)+"registro_cliente.php",this,MainActivity.class,val,key,mensajes,false);
     }
 }
