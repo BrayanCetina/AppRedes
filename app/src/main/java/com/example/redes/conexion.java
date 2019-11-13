@@ -38,10 +38,12 @@ public class conexion {
                     public void onResponse(String response)
                     {
                         //si la respuesta viene vacia es que el usuario no se encuentra
-                        if(response.equals("")){
+                        if(response.equals("[]")){
                             Toast.makeText(context, mensajes[0] , Toast.LENGTH_LONG).show();
                         }else {
                             if(logeo) {
+                                response=response.replace("[","");
+                                response=response.replace("]","");
                                 //Toast.makeText(context, response, Toast.LENGTH_LONG).show();
                                 JSONObject OBJETO = null;
                                 try {
@@ -66,6 +68,7 @@ public class conexion {
                                 SQLiteDatabase bd=baseDatosAdmin.getWritableDatabase();
                                 // generar el registro a guardar
                                 ContentValues  registro = new ContentValues();
+                                registro.put("idcliente",id);
                                 registro.put("user",user);
                                 registro.put("pass",pass);
                                 registro.put("nombre",nombre);
