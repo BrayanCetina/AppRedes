@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="61dp"
         android:layout_marginTop="22dp"
-        android:text="Fecha de Pago:"
+        android:text="Fecha de Proximo Pago:"
         app:layout_constraintStart_toStartOf="@+id/progressBar"
         app:layout_constraintTop_toBottomOf="@+id/calendarView" />
 

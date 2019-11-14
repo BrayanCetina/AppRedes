@@ -1,7 +1,9 @@
 package com.example.redes.ui.gallery;
 
+import android.app.AlertDialog;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -37,24 +39,24 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class GalleryFragment extends Fragment {
-    CalendarView calendario;
-    Date presentDate;
-    TextView fecha,fecha1;
-    String  dia,mes,año,diapre;
+
+    TextView fecha;
+    String  dia;
+    String mes="",año="",diapre="";
     String idcliente;
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         LayoutInflater lf = getActivity().getLayoutInflater();
         View root = lf.inflate(R.layout.fragment_gallery, container, false);
+        //direccionamos las variables
         fecha=root.findViewById(R.id.fecha);
-        calendario=root.findViewById(R.id.calendarView);
-        //fecha actual
-        Date fecha2=new Date();
-        diapre=String.valueOf(fecha2.getDay());
-        año=String.valueOf(fecha2.getYear());
-        mes=String.valueOf(fecha2.getMonth());
-        consultar();
-        Conexion(getString(R.string.url)+"fecha.php");
+        //creamos un calendar para obtener la fecha actual
+        Calendar fecha=Calendar.getInstance();
+        año=String.valueOf(fecha.get(Calendar.YEAR));//año
+        mes=String.valueOf(fecha.get(Calendar.MONTH)+1);//importante sumarle 1 al mes porque empieza desde 0
+        diapre=String.valueOf(fecha.get(Calendar.DAY_OF_MONTH));//dia del mes
+        consultar();//consultamos el id del cliente para mandarlo y obtener su fecha de corte
+        Conexion(getString(R.string.url)+"fecha.php");//mandamos al metodo consultar para obtener los datos del cliente
 
                 // Inflate the layout for this fragment
         return root;
@@ -66,12 +68,7 @@ public class GalleryFragment extends Fragment {
         //Se hace la consulta de la BD
         Cursor tabla= bd.rawQuery("SELECT * FROM prueba",null);
         tabla.moveToFirst();
-        //fecha1.setText("");
-        idcliente=tabla.getString(1);
-        //Toast.makeText(getContext(), idcliente , Toast.LENGTH_LONG).show();
-        do{
-            //fecha1.setText(fecha1.getText()+ "--"+tabla.getString(1));
-        }while(tabla.moveToNext());
+        idcliente=tabla.getString(1);//obtenemos su id
         tabla.close();
         bd.close();
     }
@@ -90,28 +87,49 @@ public class GalleryFragment extends Fragment {
                             Toast.makeText(getContext(), "fallo" , Toast.LENGTH_LONG).show();
                         }else {
                                 //si trae datos es que si existe
+                            //se le quitan [] para que se pueda transaformar a un JSONObject
                             response=response.replace("[","");
                             response=response.replace("]","");
                                 Toast.makeText(getContext(), "BIEN", Toast.LENGTH_LONG).show();
                             JSONObject OBJETO = null;
                             try {
-                                OBJETO = new JSONObject(response);
+                                OBJETO = new JSONObject(response);//pasamos los datos al jsonobject
                             } catch (JSONException e) {
                                 e.printStackTrace();
-                                //Toast.makeText(context, "primer mal", Toast.LENGTH_LONG).show();
                             }
                             String diacli = "";
                             try {
-                                dia = OBJETO.getString("0");
+                                dia = OBJETO.getString("0");//extraemos el dia de corte
                             } catch (JSONException e) {
                                 e.printStackTrace();
-                                //Toast.makeText(context, "segundo mal"+r, Toast.LENGTH_LONG).show();
                             }
-                            //Toast.makeText(getContext(), dia , Toast.LENGTH_LONG).show();
+                            //se comprueba si el dia actual es mayor al dia de corte se pasa al siguinete mes
+                            //la fecha de pago
                             if(Integer.parseInt(diapre)>Integer.parseInt(dia)){
-                             mes=String.valueOf(Integer.parseInt(mes)+1);
+                                //y si el mes es doce se tiene que pasar a 1(enero) y sumar 1 al año
+                                if(Integer.parseInt(mes)==12){
+                                    mes="1";
+                                    año=(Integer.parseInt(año)+1)+"";
+                                }else {
+                                    //de lo contrario solo se le suma al mes
+                                    mes = (Integer.parseInt(mes) + 1) + "";
+                                }
                             }
-                            Toast.makeText(getContext(), diapre , Toast.LENGTH_LONG).show();
+                            //si faltan 5 dias para la fecha de corte se muestra un alert
+                            if(Integer.parseInt(diapre)>=2 && Integer.parseInt(diapre)<7) {
+                                int res=Integer.parseInt(dia)-Integer.parseInt(diapre);
+                                AlertDialog.Builder dialogo1 = new AlertDialog.Builder(getContext());
+                                dialogo1.setTitle("Importante");
+                                dialogo1.setMessage("faltan " + res + " para la fecha de corte");
+                                dialogo1.setCancelable(false);
+                                dialogo1.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialogo1, int id) {
+
+                                    }
+                                });
+                                dialogo1.show();
+                            }
+                            //mostramos la fecha de proximo pago
                             fecha.setText(dia+"/"+mes+"/"+año);
                         }
 
