@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import android.widget.CalendarView;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import android.text.format.DateFormat;
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -40,31 +40,35 @@ public class GalleryFragment extends Fragment {
     CalendarView calendario;
     Date presentDate;
     TextView fecha,fecha1;
-    String  dia,mes,año;
+    String  dia,mes,año,diapre;
     String idcliente;
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        fecha=getActivity().findViewById(R.id.textView7);
-        fecha=getActivity().findViewById(R.id.fecha);
-        calendario=getActivity().findViewById(R.id.calendarView);
-        //Date fecha=new Date();
-        //año=String.valueOf(fecha.getYear());
-        //mes=String.valueOf(fecha.getMonth());
+        LayoutInflater lf = getActivity().getLayoutInflater();
+        View root = lf.inflate(R.layout.fragment_gallery, container, false);
+        fecha=root.findViewById(R.id.fecha);
+        calendario=root.findViewById(R.id.calendarView);
+        //fecha actual
+        Date fecha2=new Date();
+        diapre=String.valueOf(fecha2.getDay());
+        año=String.valueOf(fecha2.getYear());
+        mes=String.valueOf(fecha2.getMonth());
         consultar();
         Conexion(getString(R.string.url)+"fecha.php");
-        //fecha.setText(dia);
+
                 // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_gallery, container, false);
+        return root;
     }
     public void consultar(){
+        //se crea la BD local para recibir datos
         DataBase baseDatosAdmin = new DataBase(getContext(), "bdPrueba",null,1);
         SQLiteDatabase bd=baseDatosAdmin.getWritableDatabase();
-
+        //Se hace la consulta de la BD
         Cursor tabla= bd.rawQuery("SELECT * FROM prueba",null);
         tabla.moveToFirst();
         //fecha1.setText("");
         idcliente=tabla.getString(1);
-        Toast.makeText(getContext(), idcliente , Toast.LENGTH_LONG).show();
+        //Toast.makeText(getContext(), idcliente , Toast.LENGTH_LONG).show();
         do{
             //fecha1.setText(fecha1.getText()+ "--"+tabla.getString(1));
         }while(tabla.moveToNext());
@@ -72,6 +76,7 @@ public class GalleryFragment extends Fragment {
         bd.close();
     }
     public void Conexion(String url) {
+        TextView a;
         RequestQueue rq= Volley.newRequestQueue(getContext());
         //utilizamos el stringrequest donde mandamos todos los datos como el url el metodo
         StringRequest jrq = new StringRequest(Request.Method.POST, url,
@@ -102,7 +107,12 @@ public class GalleryFragment extends Fragment {
                                 e.printStackTrace();
                                 //Toast.makeText(context, "segundo mal"+r, Toast.LENGTH_LONG).show();
                             }
-                            Toast.makeText(getContext(), dia , Toast.LENGTH_LONG).show();
+                            //Toast.makeText(getContext(), dia , Toast.LENGTH_LONG).show();
+                            if(Integer.parseInt(diapre)>Integer.parseInt(dia)){
+                             mes=String.valueOf(Integer.parseInt(mes)+1);
+                            }
+                            Toast.makeText(getContext(), diapre , Toast.LENGTH_LONG).show();
+                            fecha.setText(dia+"/"+mes+"/"+año);
                         }
 
                     }
