@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -54,6 +55,19 @@ public class ToolsFragment extends Fragment {
         txtCorreo=vista.findViewById(R.id.txtCorreo);
         request= Volley.newRequestQueue(getContext());
         cargar();
+        Button button = (Button) vista.findViewById(R.id.buttonaPerfilAceptar);
+        button.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                if(true) {
+                    Conexion(R.string.url + "actualizar.php");
+                    Intent registrar = new Intent(getContext(), ToolsFragment.class);
+                    startActivity(registrar);
+                }
+            }
+        });
         //Folio=findViewById(R.id.txtFolio);
         //User=findViewById(R.id.txtUser);
         // Inflate the layout for this fragment
@@ -120,10 +134,5 @@ public class ToolsFragment extends Fragment {
             }
         };
         rq.add(jrq);
-    }
-    public void actualizar(View v){
-        Conexion(R.string.url+"actualizar.php");
-        Intent registrar = new Intent(getContext(), ToolsFragment.class);
-        startActivity(registrar);
     }
 }

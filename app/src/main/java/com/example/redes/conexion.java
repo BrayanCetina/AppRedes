@@ -81,7 +81,7 @@ public class conexion {
                                     Intent Acer = new Intent(context, clas);
                                     context.startActivity(Acer);
                                 try {
-                                    finalize();
+                                    conexion.this.finalize();
                                 } catch (Throwable throwable) {
                                     throwable.printStackTrace();
                                 }

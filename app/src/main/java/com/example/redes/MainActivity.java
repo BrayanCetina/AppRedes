@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     public void Registrar (View view){
         Intent registrar = new Intent(this, registro.class);
         startActivity(registrar);
+        finish();
     }
     public void Acceder (View view){
         mandar();
