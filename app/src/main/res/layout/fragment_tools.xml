@@ -110,7 +110,6 @@
         android:layout_width="150dp"
         android:layout_height="50dp"
         android:layout_marginTop="8dp"
-        android:onClick="actualizar"
         android:text="Aceptar"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintEnd_toEndOf="parent"
