@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -29,6 +30,7 @@ import com.example.redes.R;
 import com.example.redes.clientes;
 import com.example.redes.conexion;
 import com.example.redes.encrip;
+import com.example.redes.registro;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -52,7 +54,6 @@ public class ToolsFragment extends Fragment {
         txtCorreo=vista.findViewById(R.id.txtCorreo);
         request= Volley.newRequestQueue(getContext());
         cargar();
-        Conexion(R.string.url+"actualizar.php");
         //Folio=findViewById(R.id.txtFolio);
         //User=findViewById(R.id.txtUser);
         // Inflate the layout for this fragment
@@ -119,5 +120,10 @@ public class ToolsFragment extends Fragment {
             }
         };
         rq.add(jrq);
+    }
+    public void actualizar(View v){
+        Conexion(R.string.url+"actualizar.php");
+        Intent registrar = new Intent(getContext(), ToolsFragment.class);
+        startActivity(registrar);
     }
 }
