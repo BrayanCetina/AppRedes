@@ -61,6 +61,7 @@ public class ToolsFragment extends Fragment {
             @Override
             public void onClick(View v)
             {
+                //brayan valida que los campos a editar usuario o nombre esten llenos y sean correctos para actualizar
                 if(true) {
                     Conexion(R.string.url + "actualizar.php");
                     Intent registrar = new Intent(getContext(), ToolsFragment.class);
