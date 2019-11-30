@@ -76,24 +76,23 @@ public class ToolsFragment extends Fragment {
 
     }
     private  void cargar(){
-        DataBase baseDatosAdmin = new DataBase(getContext(), "bdPrueba",null,1);
+        DataBase baseDatosAdmin = new DataBase(getContext(), "prueba",null,1);
         SQLiteDatabase bd=baseDatosAdmin.getWritableDatabase();
 
         Cursor tabla= bd.rawQuery("SELECT * FROM prueba WHERE id=1",null);
         tabla.moveToPosition(1);
         //1.id 2.nombre 3.apellido 4.usuario 5.password 6.correo
         id=tabla.getString(1);
-        txtNom.setText("1 "+tabla.getString(4));
+        txtNom.setText(""+tabla.getString(4));
         nombre=tabla.getString(4);
-        txtApe.setText("2 "+tabla.getString(5));
+        txtApe.setText(""+tabla.getString(5));
         apellido=tabla.getString(5);
-        txtCorreo.setText("3 "+tabla.getString(6));
+        txtCorreo.setText(""+tabla.getString(6));
         correo=tabla.getString(6);
         do{
             Toast.makeText(getContext(), tabla.getString(1), Toast.LENGTH_LONG).show();
             Toast.makeText(getContext(), tabla.getString(2), Toast.LENGTH_LONG).show();
             Toast.makeText(getContext(), tabla.getString(3), Toast.LENGTH_LONG).show();
-            txtNom.setText(txtNom+"--"+tabla.getString(3));
         }while(tabla.moveToNext());
         tabla.close();
         bd.close();

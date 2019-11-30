@@ -64,7 +64,7 @@ public class conexion {
                                     e.printStackTrace();
                                     //Toast.makeText(context, "segundo mal"+r, Toast.LENGTH_LONG).show();
                                 }
-                                DataBase baseDatosAdmin = new DataBase(context, "bdPrueba",null,1);
+                                DataBase baseDatosAdmin = new DataBase(context, "prueba",null,1);
                                 SQLiteDatabase bd=baseDatosAdmin.getWritableDatabase();
                                 // generar el registro a guardar
                                 ContentValues  registro = new ContentValues();
@@ -73,6 +73,7 @@ public class conexion {
                                 registro.put("pass",pass);
                                 registro.put("nombre",nombre);
                                 registro.put("apellido",apelli);
+                                registro.put("correo","jale.2126@gmail.com");
                                 ///insertamos el registro en la Base de Datos
                                 bd.insert("prueba",null,registro);
                                 bd.close();

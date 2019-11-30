@@ -63,7 +63,7 @@ public class GalleryFragment extends Fragment {
     }
     public void consultar(){
         //se crea la BD local para recibir datos
-        DataBase baseDatosAdmin = new DataBase(getContext(), "bdPrueba",null,1);
+        DataBase baseDatosAdmin = new DataBase(getContext(), "prueba",null,1);
         SQLiteDatabase bd=baseDatosAdmin.getWritableDatabase();
         //Se hace la consulta de la BD
         Cursor tabla= bd.rawQuery("SELECT * FROM prueba",null);
