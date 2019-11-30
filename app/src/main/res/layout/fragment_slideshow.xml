@@ -18,76 +18,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="389dp"
-        android:layout_height="256dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="115dp"
-        android:background="#00FFFFFF"
-        android:backgroundTint="#00FFFFFF"
-        android:gravity="left"
-        android:hyphenationFrequency="normal"
-        android:text="Nombre: Jacob
-
-
-
-
-
-
-
-
-
-        Apellido: Luna
-
-
-
-
-
-
-
-
-
-
-        Fecha de Inicio: 10/09/10
-
-
-
-
-
-
-
-
-
-        Fecha Fin: 10/09/19
-
-
-
-
-
-
-
-
-
-
-
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        Mauris hendrerit mi leo, quis ultrices nisl ullamcorper varius.
-        Nullam id nibh nisl. Curabitur consequat sagittis dignissim.
-        Fusce massa dolor, sollicitudin ac efficitur vel, auctor ut turpis.
-        Donec nec dictum neque. Cras a sapien at metus ullamcorper laoreet quis eget sapien.
-        Maecenas auctor gravida feugiat. Maecenas ac leo tristique, eleifend ipsum at, auctor mi.
-        Praesent ac lorem ornare, dapibus metus auctor, viverra odio. Cras tempus orci at sapien pharetra molestie.
-        Duis justo purus, condimentum a metus et, venenatis dignissim urna. Duis ac ex turpis.
-        Quisque porttitor pretium maximus. Ut at vehicula augue. Nulla dapibus tristique placerat."
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textIsSelectable="false"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
-
     <ImageView
         android:id="@+id/imageView5"
         android:layout_width="283dp"
@@ -95,12 +25,11 @@
         android:layout_marginStart="74dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="74dp"
-        android:layout_marginBottom="13dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView9"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@mipmap/ic_launcher_foreground" />
+
 
     <ImageView
         android:id="@+id/imageView18"
@@ -121,4 +50,11 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <WebView
+        android:id="@+id/webview"
+        android:layout_width="409dp"
+        android:layout_height="308dp"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="242dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
