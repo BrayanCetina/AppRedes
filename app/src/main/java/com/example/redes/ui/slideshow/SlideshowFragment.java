@@ -29,8 +29,7 @@ public class SlideshowFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        LayoutInflater lf = getActivity().getLayoutInflater();
-        View vista=lf.inflate(R.layout.fragment_tools,container,false);
+        View vista = inflater.inflate(R.layout.fragment_tools,container,false);
         mostrarPDF("prueba.pdf",getContext());
         return vista;
 

@@ -64,7 +64,7 @@ public class ToolsFragment extends Fragment {
                 //brayan valida que los campos a editar usuario o nombre esten llenos y sean correctos para actualizar
                 if(true) {
                     Conexion(R.string.url + "actualizar.php");
-                    Intent registrar = new Intent(getContext(), ToolsFragment.class);
+                    Intent registrar = new Intent(getActivity().getApplicationContext(), ToolsFragment.class);
                     startActivity(registrar);
                 }
             }
@@ -79,7 +79,7 @@ public class ToolsFragment extends Fragment {
         DataBase baseDatosAdmin = new DataBase(getContext(), "prueba",null,1);
         SQLiteDatabase bd=baseDatosAdmin.getWritableDatabase();
 
-        Cursor tabla= bd.rawQuery("SELECT * FROM prueba WHERE id=1",null);
+        Cursor tabla= bd.rawQuery("SELECT * FROM prueba",null);
         tabla.moveToPosition(1);
         //1.id 2.nombre 3.apellido 4.usuario 5.password 6.correo
         id=tabla.getString(1);

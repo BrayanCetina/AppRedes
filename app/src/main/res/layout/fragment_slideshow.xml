@@ -9,10 +9,11 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="223dp"
         android:text="Internet.S.V."
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:textColor="#FFF"
-        app:layout_constraintBottom_toTopOf="@+id/textView17"
+        app:layout_constraintBottom_toTopOf="@+id/webview"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -20,8 +21,8 @@
 
     <ImageView
         android:id="@+id/imageView5"
-        android:layout_width="283dp"
-        android:layout_height="225dp"
+        android:layout_width="237dp"
+        android:layout_height="153dp"
         android:layout_marginStart="74dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="74dp"
@@ -54,7 +55,12 @@
     <WebView
         android:id="@+id/webview"
         android:layout_width="409dp"
-        android:layout_height="308dp"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="242dp" />
+        android:layout_height="365dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="53dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
 </androidx.constraintlayout.widget.ConstraintLayout>
