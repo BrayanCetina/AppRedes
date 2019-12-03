@@ -20,37 +20,21 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.redes.R;
+import com.github.barteksc.pdfviewer.PDFView;
 
 import java.io.File;
 
 public class SlideshowFragment extends Fragment {
 
-    WebView webview;
+    PDFView pdfView;
+
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View vista = inflater.inflate(R.layout.fragment_tools,container,false);
-        mostrarPDF("prueba.pdf",getContext());
-        return vista;
+        View root = inflater.inflate(R.layout.fragment_slideshow,container,false);
+        pdfView = (PDFView) root.findViewById(R.id.pdfView);
+        pdfView.fromAsset("prueba.pdf").load();
+        return root;
 
-    }
-    //Procedimiento para mostrar el documento PDF generado
-    public void mostrarPDF(String nombPdf, Context context) {
-        Toast.makeText(context, "Visualizando documento", Toast.LENGTH_LONG).show();
-
-        // Así va correctamente la dirección
-        String dir = Environment.getExternalStorageDirectory()+ "/AppRedes/pdf/" + nombPdf;
-
-        File arch = new File(dir);
-
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setDataAndType(Uri.fromFile(arch), "application/pdf");
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        try {
-            context.startActivity(intent);
-        } catch (ActivityNotFoundException e) {
-            Toast.makeText(context, "No existe una aplicación para abrir el PDF", Toast.LENGTH_SHORT).show();
-        }
     }
 }

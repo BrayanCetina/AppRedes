@@ -5,27 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="223dp"
-        android:text="Internet.S.V."
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:textColor="#FFF"
-        app:layout_constraintBottom_toTopOf="@+id/webview"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
-
     <ImageView
         android:id="@+id/imageView5"
-        android:layout_width="237dp"
-        android:layout_height="153dp"
-        android:layout_marginStart="74dp"
+        android:layout_width="228dp"
+        android:layout_height="104dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="74dp"
+        android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -48,19 +34,19 @@
         android:text="Internet.S.V."
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:textColor="#FFF"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView18"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <WebView
-        android:id="@+id/webview"
-        android:layout_width="409dp"
-        android:layout_height="365dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginBottom="53dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <com.github.barteksc.pdfviewer.PDFView
+        android:id="@+id/pdfView"
+        android:layout_width="410dp"
+        android:layout_height="424dp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView18"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView5">
+
+    </com.github.barteksc.pdfviewer.PDFView>
 </androidx.constraintlayout.widget.ConstraintLayout>
