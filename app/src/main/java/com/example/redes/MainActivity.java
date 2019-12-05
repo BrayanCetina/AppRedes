@@ -42,6 +42,6 @@ public class MainActivity extends AppCompatActivity {
         conexion con=new conexion();//CREAMOS UN OBJETO DE LA CLASE CONEXION
         //MANDAMOS TOd0 AL METODO CONEXION
         con.Conexion(getString(R.string.url)+"usuario_cliente.php",this,Main2Activity.class,val,key,mensajes,true);
-
+        finish();
     }
 }

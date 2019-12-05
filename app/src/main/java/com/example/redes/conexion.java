@@ -90,6 +90,11 @@ public class conexion {
                                 Toast.makeText(context, mensajes[1], Toast.LENGTH_LONG).show();
                                 Intent Acer = new Intent(context, clas);
                                 context.startActivity(Acer);
+                                try {
+                                    finalize();
+                                } catch (Throwable throwable) {
+                                    throwable.printStackTrace();
+                                }
                             }
 
 
