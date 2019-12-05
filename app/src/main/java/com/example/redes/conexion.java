@@ -73,7 +73,6 @@ public class conexion {
                                 registro.put("pass",pass);
                                 registro.put("nombre",nombre);
                                 registro.put("apellido",apelli);
-                                registro.put("correo","jale.2126@gmail.com");
                                 ///insertamos el registro en la Base de Datos
                                 bd.insert("prueba",null,registro);
                                 bd.close();

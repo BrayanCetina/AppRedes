@@ -41,10 +41,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ToolsFragment extends Fragment {
-    TextView txtNom, txtApe, txtCorreo;
+    TextView txtNom, txtApe, txtCorreo,txtpass1,txtpass2;
     ProgressDialog progreso;
     RequestQueue request;
-    String nombre,apellido,correo,id,password,usuario;
+    String nombre,apellido,id,password,usuario;
     JsonObjectRequest jsonObjectRequest;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -53,6 +53,8 @@ public class ToolsFragment extends Fragment {
         txtNom= vista.findViewById(R.id.txtNom);
         txtApe= vista.findViewById(R.id.txtApe);
         txtCorreo=vista.findViewById(R.id.txtCorreo);
+        txtpass1= vista.findViewById(R.id.txtPass1);
+        txtpass2= vista.findViewById(R.id.txtPass2);
         request= Volley.newRequestQueue(getContext());
         cargar();
         Button button = (Button) vista.findViewById(R.id.buttonaPerfilAceptar);
@@ -62,16 +64,31 @@ public class ToolsFragment extends Fragment {
             public void onClick(View v)
             {
                 //brayan valida que los campos a editar usuario o nombre esten llenos y sean correctos para actualizar
-                if(true) {
+                if(txtCorreo.getText().equals("")) {
+                    Toast.makeText(getContext(),"no deje vacio el camppo de usuario", Toast.LENGTH_LONG).show();
+                }else if(txtCorreo.getText()!=usuario && txtpass1.getText().equals("") && txtpass2.getText().equals("")){
+                    //por si solo cambia el nombre de ususario
+                    usuario=txtCorreo.getText().toString();
                     Conexion(R.string.url + "actualizar.php");
                     Intent registrar = new Intent(getActivity().getApplicationContext(), ToolsFragment.class);
                     startActivity(registrar);
+                }else if(txtpass1.getText().equals("")){
+                    Toast.makeText(getContext(),"campo de contraseña vacio", Toast.LENGTH_LONG).show();
+                }else if(txtpass2.getText().equals("")){
+                    Toast.makeText(getContext(),"campo de contraseña vacio", Toast.LENGTH_LONG).show();
+                }else if(txtpass1.getText().equals(txtpass2.getText())){
+                    //aqui ya
+                    encrip eso=new encrip();
+                    password=eso.MD5(txtpass1.getText().toString());
+                    Conexion(R.string.url + "actualizar.php");
+                    Intent registrar = new Intent(getActivity().getApplicationContext(), ToolsFragment.class);
+                    startActivity(registrar);
+                }else{
+                    //estan mal
+                    Toast.makeText(getContext(),"las contraseñas no son iguales", Toast.LENGTH_LONG).show();
                 }
             }
         });
-        //Folio=findViewById(R.id.txtFolio);
-        //User=findViewById(R.id.txtUser);
-        // Inflate the layout for this fragment
         return vista;
 
     }
@@ -87,12 +104,10 @@ public class ToolsFragment extends Fragment {
         nombre=tabla.getString(4);
         txtApe.setText(""+tabla.getString(5));
         apellido=tabla.getString(5);
-        txtCorreo.setText(""+tabla.getString(6));
-        correo=tabla.getString(6);
+        txtCorreo.setText(""+tabla.getString(2));
+        usuario=tabla.getString(2);
+        password=tabla.getString(3);
         do{
-            Toast.makeText(getContext(), tabla.getString(1), Toast.LENGTH_LONG).show();
-            Toast.makeText(getContext(), tabla.getString(2), Toast.LENGTH_LONG).show();
-            Toast.makeText(getContext(), tabla.getString(3), Toast.LENGTH_LONG).show();
         }while(tabla.moveToNext());
         tabla.close();
         bd.close();

@@ -12,13 +12,13 @@ public class DataBase extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        String sql="CREATE TABLE prueba(id integer primary key,idcliente integer,user varchar,pass varchar,nombre text,apellido text,correo text)";
+        String sql="CREATE TABLE prueba(id integer primary key,idcliente integer,user varchar,pass varchar,nombre text,apellido text)";
         sqLiteDatabase.execSQL(sql);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         sqLiteDatabase.execSQL("drop table if exists prueba");
-        sqLiteDatabase.execSQL("CREATE TABLE prueba(id integer primary key,idcliente integer,user varchar,pass varchar,nombre text,apellido text,correo text)");
+        sqLiteDatabase.execSQL("CREATE TABLE prueba(id integer primary key,idcliente integer,user varchar,pass varchar,nombre text,apellido text)");
     }
 }
