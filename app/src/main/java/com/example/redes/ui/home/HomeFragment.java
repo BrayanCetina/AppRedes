@@ -34,6 +34,7 @@ public class HomeFragment extends Fragment {
         return root;
     }
     private ArrayList<Entidad> GetArrayItems(){
+        // Lista de internet de los paquetes
         ArrayList<Entidad> listItems = new ArrayList<>();
         listItems.add(new Entidad(R.drawable.mb_1,"Plan Clasico","A solo $299"));
         listItems.add(new Entidad(R.drawable.mb_2,"Plan Mediano","A solo $499"));
