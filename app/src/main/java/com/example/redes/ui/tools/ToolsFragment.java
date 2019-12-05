@@ -46,6 +46,7 @@ public class ToolsFragment extends Fragment {
     RequestQueue request;
     String nombre,apellido,id,password,usuario;
     JsonObjectRequest jsonObjectRequest;
+    encrip eso=new encrip();
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         LayoutInflater lf = getActivity().getLayoutInflater();
@@ -68,7 +69,7 @@ public class ToolsFragment extends Fragment {
                     Toast.makeText(getContext(),"no deje vacio el camppo de usuario", Toast.LENGTH_LONG).show();
                 }else if(txtCorreo.getText()!=usuario && txtpass1.getText().equals("") && txtpass2.getText().equals("")){
                     //por si solo cambia el nombre de ususario
-                    usuario=txtCorreo.getText().toString();
+                    usuario=eso.Encriptar(txtCorreo.getText().toString());
                     Conexion(R.string.url + "actualizar.php");
                     Intent registrar = new Intent(getActivity().getApplicationContext(), ToolsFragment.class);
                     startActivity(registrar);
@@ -78,8 +79,8 @@ public class ToolsFragment extends Fragment {
                     Toast.makeText(getContext(),"campo de contraseña vacio", Toast.LENGTH_LONG).show();
                 }else if(txtpass1.getText().equals(txtpass2.getText())){
                     //aqui ya
-                    encrip eso=new encrip();
-                    password=eso.MD5(txtpass1.getText().toString());
+
+                    password=eso.Encriptar(txtpass1.getText().toString());
                     Conexion(R.string.url + "actualizar.php");
                     Intent registrar = new Intent(getActivity().getApplicationContext(), ToolsFragment.class);
                     startActivity(registrar);
@@ -104,7 +105,11 @@ public class ToolsFragment extends Fragment {
         nombre=tabla.getString(4);
         txtApe.setText(""+tabla.getString(5));
         apellido=tabla.getString(5);
-        txtCorreo.setText(""+tabla.getString(2));
+        try {
+            txtCorreo.setText(""+eso.Desencriptar(tabla.getString(2)));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         usuario=tabla.getString(2);
         password=tabla.getString(3);
         do{

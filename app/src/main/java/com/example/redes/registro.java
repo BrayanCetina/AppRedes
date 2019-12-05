@@ -42,8 +42,8 @@ public class registro extends AppCompatActivity {
         encrip eso = new encrip();
         String[] val=new String[3];
         val[0]=Folio.getText().toString();//AL IGUAL QUE SE GUARDA EL VALOR QUE SE MANDAR EN UN ARREGLO
-        val[1]=eso.MD5(User.getText().toString());
-        val[2]=eso.MD5(Pass1.getText().toString());
+        val[1]=eso.Encriptar(User.getText().toString());
+        val[2]=eso.Encriptar(Pass1.getText().toString());
         String[] key=new String[3];
         key[0]="Folio";//GUARDAMOS EL KEY DE CADA VALOR A MANDAR EN FORMA DE ARREGLO
         key[1]="User";

@@ -30,8 +30,8 @@ public class MainActivity extends AppCompatActivity {
     public void mandar(){
         encrip eso = new encrip();
         String[] val=new String[2];
-        val[0]=eso.MD5(txtUser.getText().toString());//ENCRIPTAMOS LOS VALORES QUE EL USUARIO AGREGE
-        val[1]=eso.MD5(txtPwd.getText().toString());//AL IGUAL QUE SE GUARDA EL VALOR QUE SE MANDAR EN UN ARREGLO
+        val[0]=eso.Encriptar(txtUser.getText().toString());//ENCRIPTAMOS LOS VALORES QUE EL USUARIO AGREGE
+        val[1]=eso.Encriptar(txtPwd.getText().toString());//AL IGUAL QUE SE GUARDA EL VALOR QUE SE MANDAR EN UN ARREGLO
         String[] key=new String[2];
         key[0]="user";//GUARDAMOS EL KEY DE CADA VALOR A MANDAR EN FORMA DE ARREGLO
         key[1]="pwd";
