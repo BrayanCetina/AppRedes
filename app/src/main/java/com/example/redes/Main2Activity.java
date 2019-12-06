@@ -6,6 +6,7 @@ import android.os.Bundle;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
+import android.view.MenuItem;
 import android.view.View;
 
 import androidx.navigation.NavController;
@@ -21,6 +22,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
+import android.widget.Toast;
 
 public class Main2Activity extends AppCompatActivity {
 
@@ -66,5 +68,13 @@ public class Main2Activity extends AppCompatActivity {
     public void RegistrarMain2 (View view){
         Intent registrar = new Intent(this, registro.class);
         startActivity(registrar);
+    }
+    public boolean onOptionsItemSelected(MenuItem menuItem){
+        switch (menuItem.getItemId()){
+            case R.id.cerrar:
+                Toast.makeText(this,"has pulsado cerrar sesion", Toast.LENGTH_LONG).show();
+                break;
+        }
+        return true;
     }
 }
