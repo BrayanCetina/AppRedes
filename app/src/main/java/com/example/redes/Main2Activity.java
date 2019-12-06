@@ -1,6 +1,7 @@
 package com.example.redes;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -23,6 +24,8 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
 import android.widget.Toast;
+
+import java.sql.SQLData;
 
 public class Main2Activity extends AppCompatActivity {
 
@@ -72,6 +75,10 @@ public class Main2Activity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem menuItem){
         switch (menuItem.getItemId()){
             case R.id.cerrar:
+                DataBase baseDatosAdmin=new DataBase(this, "prueba",null,1);;
+                SQLiteDatabase bd=baseDatosAdmin.getWritableDatabase();
+                bd.delete("prueba","*",null);
+                finish();
                 Toast.makeText(this,"has pulsado cerrar sesion", Toast.LENGTH_LONG).show();
                 break;
         }
