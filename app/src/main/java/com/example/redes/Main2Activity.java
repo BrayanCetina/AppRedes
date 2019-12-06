@@ -73,15 +73,13 @@ public class Main2Activity extends AppCompatActivity {
         startActivity(registrar);
     }
     public boolean onOptionsItemSelected(MenuItem menuItem){
-        switch (menuItem.getItemId()){
-            case R.id.cerrar:
-                DataBase baseDatosAdmin=new DataBase(this, "prueba",null,1);;
-                SQLiteDatabase bd=baseDatosAdmin.getWritableDatabase();
-                bd.delete("prueba","*",null);
-                finish();
-                Toast.makeText(this,"has pulsado cerrar sesion", Toast.LENGTH_LONG).show();
-                break;
-        }
         return true;
+    }
+    public void cerarsesion(){
+        /*DataBase baseDatosAdmin=new DataBase(this, "prueba",null,1);
+                SQLiteDatabase bd=baseDatosAdmin.getWritableDatabase();
+                bd.delete("prueba","*",null);*/
+        Toast.makeText(this,"has pulsado cerrar sesion", Toast.LENGTH_LONG).show();
+        // finish();
     }
 }
