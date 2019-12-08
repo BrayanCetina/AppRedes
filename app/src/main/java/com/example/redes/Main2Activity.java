@@ -72,14 +72,5 @@ public class Main2Activity extends AppCompatActivity {
         Intent registrar = new Intent(this, registro.class);
         startActivity(registrar);
     }
-    public boolean onOptionsItemSelected(MenuItem menuItem){
-        return true;
-    }
-    public void cerarsesion(){
-        /*DataBase baseDatosAdmin=new DataBase(this, "prueba",null,1);
-                SQLiteDatabase bd=baseDatosAdmin.getWritableDatabase();
-                bd.delete("prueba","*",null);*/
-        Toast.makeText(this,"has pulsado cerrar sesion", Toast.LENGTH_LONG).show();
-        // finish();
-    }
+
 }

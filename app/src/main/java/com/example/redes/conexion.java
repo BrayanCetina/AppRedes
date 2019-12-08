@@ -69,7 +69,7 @@ public class conexion {
                                 // generar el registro a guardar
                                 ContentValues  registro = new ContentValues();
                                 registro.put("idcliente",id);
-                                registro.put("user",user);
+                                registro.put("user",mensajes[3]);
                                 registro.put("pass",pass);
                                 registro.put("nombre",nombre);
                                 registro.put("apellido",apelli);

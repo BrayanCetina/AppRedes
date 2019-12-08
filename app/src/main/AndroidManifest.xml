@@ -32,6 +32,9 @@
         <activity android:name=".MainActivity"
             android:screenOrientation="portrait">
         </activity>
+        <activity android:name=".VisorImagen"
+            android:screenOrientation="portrait">
+        </activity>
     </application>
 
 </manifest>

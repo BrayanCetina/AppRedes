@@ -102,7 +102,7 @@
         app:srcCompat="@color/colorPrimary" />
 
     <TextView
-        android:id="@+id/textView16"
+        android:id="@+id/textView16PDF"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Internet.S.V."

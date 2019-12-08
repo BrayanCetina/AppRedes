@@ -105,11 +105,7 @@ public class ToolsFragment extends Fragment {
         nombre=tabla.getString(4);
         txtApe.setText(""+tabla.getString(5));
         apellido=tabla.getString(5);
-        try {
-            txtCorreo.setText(""+eso.Desencriptar(tabla.getString(2)));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+            txtCorreo.setText(""+tabla.getString(2));
         usuario=tabla.getString(2);
         password=tabla.getString(3);
         do{

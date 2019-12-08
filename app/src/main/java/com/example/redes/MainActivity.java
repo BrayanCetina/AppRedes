@@ -35,13 +35,14 @@ public class MainActivity extends AppCompatActivity {
         String[] key=new String[2];
         key[0]="user";//GUARDAMOS EL KEY DE CADA VALOR A MANDAR EN FORMA DE ARREGLO
         key[1]="pwd";
-        String[] mensajes=new String[3];//MANDAREMOS LOS MENSAJES A IMPRIMIR EN FORMA DE ARREGLE
+        String[] mensajes=new String[4];//MANDAREMOS LOS MENSAJES A IMPRIMIR EN FORMA DE ARREGLE
         mensajes[0]="Usuario o Contraseña incorrecto";
         mensajes[1]="BIENVENIDO";
         mensajes[2]="ERROR EN LA CONEXION";
+        mensajes[3]=txtUser.getText().toString();
         conexion con=new conexion();//CREAMOS UN OBJETO DE LA CLASE CONEXION
         //MANDAMOS TOd0 AL METODO CONEXION
         con.Conexion(getString(R.string.url)+"usuario_cliente.php",this,Main2Activity.class,val,key,mensajes,true);
-        finish();
+        //finish();
     }
 }

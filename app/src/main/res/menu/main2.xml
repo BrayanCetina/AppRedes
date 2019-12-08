@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/cerrar"
-        android:onClick="cerarsesion"
         android:orderInCategory="100"
         android:title="Cerrar Sesion"
         app:showAsAction="never" />

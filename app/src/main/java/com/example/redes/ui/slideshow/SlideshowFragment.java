@@ -19,8 +19,7 @@ public class SlideshowFragment extends Fragment {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_slideshow,container,false);
         pdfView = (PDFView) root.findViewById(R.id.pdfView);
-        pdfView.fromAsset("prueba.pdf").load();
+        pdfView.fromAsset("prueba.pdf").load(); //mostramos el pdf
         return root;
-
     }
 }
