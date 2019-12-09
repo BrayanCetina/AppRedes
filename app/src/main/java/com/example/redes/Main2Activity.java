@@ -1,9 +1,11 @@
 package com.example.redes;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
+import com.example.redes.ui.tools.ToolsFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -71,6 +73,15 @@ public class Main2Activity extends AppCompatActivity {
     public void RegistrarMain2 (View view){
         Intent registrar = new Intent(this, registro.class);
         startActivity(registrar);
+    }
+    public void cerrar(MenuItem menuItem){
+        DataBase baseDatosAdmin = new DataBase(this, "prueba",null,1);
+        SQLiteDatabase bd=baseDatosAdmin.getWritableDatabase();
+        bd.execSQL("drop table if exists prueba");
+        bd.execSQL("CREATE TABLE prueba(id integer primary key,idcliente integer,user varchar,pass varchar,nombre text,apellido text)");
+        Intent registrar = new Intent(this.getApplicationContext(), MainActivity.class);
+        startActivity(registrar);
+        Toast.makeText(this,"pesionaste cerrar sesion", Toast.LENGTH_LONG).show();
     }
 
 }

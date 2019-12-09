@@ -4,6 +4,7 @@
     <item
         android:id="@+id/cerrar"
         android:orderInCategory="100"
+        android:onClick="cerrar"
         android:title="Cerrar Sesion"
         app:showAsAction="never" />
 </menu>

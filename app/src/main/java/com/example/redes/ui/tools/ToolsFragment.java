@@ -45,6 +45,7 @@ public class ToolsFragment extends Fragment {
     ProgressDialog progreso;
     RequestQueue request;
     String nombre,apellido,id,password,usuario;
+    Button boton;
     JsonObjectRequest jsonObjectRequest;
     encrip eso=new encrip();
 
@@ -58,30 +59,33 @@ public class ToolsFragment extends Fragment {
         txtpass2= vista.findViewById(R.id.txtPass2);
         request= Volley.newRequestQueue(getContext());
         cargar();
-        Button button = (Button) vista.findViewById(R.id.buttonaPerfilAceptar);
-        button.setOnClickListener(new View.OnClickListener()
+        boton =vista.findViewById(R.id.buttonaPerfilAceptar);
+        boton.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
+                Toast.makeText(getContext(),"lo tienes", Toast.LENGTH_LONG).show();
                 //brayan valida que los campos a editar usuario o nombre esten llenos y sean correctos para actualizar
-                if(txtpass1.getText().equals(password)){
-                    if(txtCorreo.getText().equals("")) {
+                if(txtpass1.getText().toString().equals(password)){
+                    if(txtCorreo.getText().toString().equals("")) {
                         Toast.makeText(getContext(),"no deje vacio el camppo de usuario", Toast.LENGTH_LONG).show();
-                    } else if(txtCorreo.getText()!=usuario && txtpass2.getText().equals("")){
+                    } else if(txtCorreo.getText().toString()!=usuario && txtpass2.getText().equals("")){
                         //por si solo cambia el nombre de ususario
                         usuario=eso.MD5(txtCorreo.getText().toString());
                         Conexion(R.string.url + "actualizar.php");
+                        Toast.makeText(getContext(),"se actualizo el user", Toast.LENGTH_LONG).show();
                         Intent registrar = new Intent(getActivity().getApplicationContext(), ToolsFragment.class);
                         startActivity(registrar);
-                    }if(txtCorreo.getText()!="" && txtpass2.getText()!=""){
+                    }if(txtCorreo.getText().toString()!="" && txtpass2.getText().toString()!=""){
                         usuario=eso.MD5(txtCorreo.getText().toString());
                         password=eso.MD5(txtpass1.getText().toString());
                         Conexion(R.string.url + "actualizar.php");
+                        Toast.makeText(getContext(),"se actualizo la contra", Toast.LENGTH_LONG).show();
                         Intent registrar = new Intent(getActivity().getApplicationContext(), ToolsFragment.class);
                         startActivity(registrar);
                     }
-                }else if(txtpass1.getText().equals("")){
+                }else if(txtpass1.getText().toString().equals("")){
                     Toast.makeText(getContext(),"ingrese su contraseña actual para editar su usuario o contraseña", Toast.LENGTH_LONG).show();
                 }
             }
@@ -94,7 +98,7 @@ public class ToolsFragment extends Fragment {
         SQLiteDatabase bd=baseDatosAdmin.getWritableDatabase();
 
         Cursor tabla= bd.rawQuery("SELECT * FROM prueba",null);
-        tabla.moveToPosition(1);
+        tabla.moveToFirst();
         //1.id 2.nombre 3.apellido 4.usuario 5.password 6.correo
         id=tabla.getString(1);
         txtNom.setText(""+tabla.getString(4));
