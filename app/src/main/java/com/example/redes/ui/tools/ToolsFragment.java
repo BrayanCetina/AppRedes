@@ -44,7 +44,7 @@ public class ToolsFragment extends Fragment {
     TextView txtNom, txtApe, txtCorreo,txtpass1,txtpass2;
     ProgressDialog progreso;
     RequestQueue request;
-    String nombre,apellido,id,password,usuario;
+    String nombre,apellido,id,password,usuario,txtpasac,txtpasnew;
     Button boton;
     JsonObjectRequest jsonObjectRequest;
     encrip eso=new encrip();
@@ -65,27 +65,33 @@ public class ToolsFragment extends Fragment {
             @Override
             public void onClick(View v)
             {
-                Toast.makeText(getContext(),"lo tienes", Toast.LENGTH_LONG).show();
+                txtpasac=eso.MD5(txtpass1.getText().toString());
+                txtpasnew=eso.MD5(txtpass2.getText().toString());
+                //Toast.makeText(getContext(),"lo tienes", Toast.LENGTH_LONG).show();
                 //brayan valida que los campos a editar usuario o nombre esten llenos y sean correctos para actualizar
-                if(txtpass1.getText().toString().equals(password)){
+                if(txtpasac.equals(password)){
+                    //Toast.makeText(getContext(),"contraseña correcta", Toast.LENGTH_LONG).show();
                     if(txtCorreo.getText().toString().equals("")) {
-                        Toast.makeText(getContext(),"no deje vacio el camppo de usuario", Toast.LENGTH_LONG).show();
-                    } else if(txtCorreo.getText().toString()!=usuario && txtpass2.getText().equals("")){
+                        Toast.makeText(getContext(),"no deje vacio el campo de usuario", Toast.LENGTH_LONG).show();
+                    }
+                    if(txtCorreo.getText().toString()!=usuario && txtpasnew.equals("")){
                         //por si solo cambia el nombre de ususario
                         usuario=eso.MD5(txtCorreo.getText().toString());
+                        Toast.makeText(getContext(),"se va a actualizar el user", Toast.LENGTH_LONG).show();
                         Conexion(R.string.url + "actualizar.php");
                         Toast.makeText(getContext(),"se actualizo el user", Toast.LENGTH_LONG).show();
-                        Intent registrar = new Intent(getActivity().getApplicationContext(), ToolsFragment.class);
+                        Intent registrar = new Intent(getContext(), Main2Activity.class);
                         startActivity(registrar);
-                    }if(txtCorreo.getText().toString()!="" && txtpass2.getText().toString()!=""){
+                    }
+                    if(txtCorreo.getText().toString()!="" && txtpasnew!=""){
                         usuario=eso.MD5(txtCorreo.getText().toString());
                         password=eso.MD5(txtpass1.getText().toString());
                         Conexion(R.string.url + "actualizar.php");
                         Toast.makeText(getContext(),"se actualizo la contra", Toast.LENGTH_LONG).show();
-                        Intent registrar = new Intent(getActivity().getApplicationContext(), ToolsFragment.class);
+                        Intent registrar = new Intent(getContext(), Main2Activity.class);
                         startActivity(registrar);
                     }
-                }else if(txtpass1.getText().toString().equals("")){
+                }else{
                     Toast.makeText(getContext(),"ingrese su contraseña actual para editar su usuario o contraseña", Toast.LENGTH_LONG).show();
                 }
             }
@@ -116,7 +122,6 @@ public class ToolsFragment extends Fragment {
     }
 
     public void Conexion(String url) {
-        TextView a;
         RequestQueue rq= Volley.newRequestQueue(getContext());
         //utilizamos el stringrequest donde mandamos todos los datos como el url el metodo
         StringRequest jrq = new StringRequest(Request.Method.POST, url,
@@ -125,6 +130,7 @@ public class ToolsFragment extends Fragment {
                     @Override
                     public void onResponse(String response) {
                         //si la respuesta viene vacia es que el usuario no se encuentra
+                        Toast.makeText(getContext(),"se actualizo", Toast.LENGTH_LONG).show();
                     }
                 },
                 new Response.ErrorListener()
