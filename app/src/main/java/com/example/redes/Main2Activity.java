@@ -81,7 +81,7 @@ public class Main2Activity extends AppCompatActivity {
         bd.execSQL("CREATE TABLE prueba(id integer primary key,idcliente integer,user varchar,pass varchar,nombre text,apellido text)");
         Intent registrar = new Intent(this.getApplicationContext(), MainActivity.class);
         startActivity(registrar);
-        Toast.makeText(this,"pesionaste cerrar sesion", Toast.LENGTH_LONG).show();
+       // Toast.makeText(this,"pesionaste cerrar sesion", Toast.LENGTH_LONG).show();
     }
 
 }

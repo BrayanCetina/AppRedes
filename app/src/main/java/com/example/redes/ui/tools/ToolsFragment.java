@@ -79,10 +79,10 @@ public class ToolsFragment extends Fragment {
                         DataBase baseDatosAdmin = new DataBase(getContext(), "prueba",null,1);
                         SQLiteDatabase bd=baseDatosAdmin.getWritableDatabase();
                         usuario=eso.MD5(txtCorreo.getText().toString());
-                        Toast.makeText(getContext(),"se va a actualizar el user", Toast.LENGTH_LONG).show();
+                        //Toast.makeText(getContext(),"se va a actualizar el user", Toast.LENGTH_LONG).show();
                         Conexion("https://evidential-tubing.000webhostapp.com/actualizar.php");
                         bd.execSQL("UPDATE prueba SET user='"+txtCorreo.getText().toString()+"', pass='' WHERE idcliente='"+id+"'");
-                        Toast.makeText(getContext(),"se actualizo el user", Toast.LENGTH_LONG).show();
+                        //Toast.makeText(getContext(),"se actualizo el user", Toast.LENGTH_LONG).show();
                         Intent registrar = new Intent(getContext(), Main2Activity.class);
                         startActivity(registrar);
                     }
@@ -93,7 +93,7 @@ public class ToolsFragment extends Fragment {
                         password=eso.MD5(txtpass2.getText().toString());
                         Conexion( "https://evidential-tubing.000webhostapp.com/actualizar.php");
                         bd.execSQL("UPDATE prueba SET user='"+txtCorreo.getText().toString()+"', pass='"+password+"' WHERE idcliente='"+id+"'");
-                        Toast.makeText(getContext(),"se actualizo la contra", Toast.LENGTH_LONG).show();
+                        //Toast.makeText(getContext(),"se actualizo la contra", Toast.LENGTH_LONG).show();
                         Intent registrar = new Intent(getContext(), Main2Activity.class);
                         startActivity(registrar);
                     }
@@ -136,7 +136,7 @@ public class ToolsFragment extends Fragment {
                     @Override
                     public void onResponse(String response) {
                         //si la respuesta viene vacia es que el usuario no se encuentra
-                        Toast.makeText(getContext(),"se actualizo", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getContext(),"Datos Actualizados", Toast.LENGTH_LONG).show();
                     }
                 },
                 new Response.ErrorListener()
