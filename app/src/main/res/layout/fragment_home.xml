@@ -18,6 +18,8 @@
         android:id="@+id/textViewList"
         android:layout_width="412dp"
         android:layout_height="26dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"

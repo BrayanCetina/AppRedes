@@ -83,7 +83,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:text="Internet.S.V."
+        android:text="Internet. S.A DE C.V"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:textColor="#FFF"
         app:layout_constraintBottom_toTopOf="@+id/textView18"

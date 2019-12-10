@@ -10,7 +10,7 @@ public class HomePack extends ViewModel {
 
     public HomePack(){
         mTex = new MutableLiveData<>();
-        mTex.setValue("Paquetes de Internet");
+        mTex.setValue("");
     }
     public LiveData<String> getText(){return mTex;}
 }
