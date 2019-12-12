@@ -16,7 +16,7 @@
         app:srcCompat="@color/colorPrimary" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/button5"
+        android:id="@+id/button5descagar"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="246dp"
         android:layout_height="76dp"

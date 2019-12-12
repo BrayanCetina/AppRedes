@@ -52,25 +52,28 @@ public class ToolsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         LayoutInflater lf = getActivity().getLayoutInflater();
         View vista=lf.inflate(R.layout.fragment_tools,container,false);
+        //direcionamos las variables
         txtNom= vista.findViewById(R.id.txtNom);
         txtApe= vista.findViewById(R.id.txtApe);
         txtCorreo=vista.findViewById(R.id.txtCorreo);
         txtpass1= vista.findViewById(R.id.txtPass1);
         txtpass2= vista.findViewById(R.id.txtPass2);
         request= Volley.newRequestQueue(getContext());
+        //cargamos los datos del usuario en los textview
         cargar();
+        //boton para editar
         boton =vista.findViewById(R.id.buttonaPerfilAceptar);
         boton.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
+                //encriptamos las contraseñas para validarlo
                 txtpasac=eso.MD5(txtpass1.getText().toString());
                 txtpasnew=eso.MD5(txtpass2.getText().toString());
-                //Toast.makeText(getContext(),"lo tienes", Toast.LENGTH_LONG).show();
-                //brayan valida que los campos a editar usuario o nombre esten llenos y sean correctos para actualizar
+                //validamos que los campos esten llenos
                 if(txtpasac.equals(password)){
-                    //Toast.makeText(getContext(),"contraseña correcta", Toast.LENGTH_LONG).show();
+
                     if(txtCorreo.getText().toString().equals("")) {
                         Toast.makeText(getContext(),"no deje vacio el campo de usuario", Toast.LENGTH_LONG).show();
                     }
@@ -79,10 +82,9 @@ public class ToolsFragment extends Fragment {
                         DataBase baseDatosAdmin = new DataBase(getContext(), "prueba",null,1);
                         SQLiteDatabase bd=baseDatosAdmin.getWritableDatabase();
                         usuario=eso.MD5(txtCorreo.getText().toString());
-                        //Toast.makeText(getContext(),"se va a actualizar el user", Toast.LENGTH_LONG).show();
                         Conexion("https://evidential-tubing.000webhostapp.com/actualizar.php");
                         bd.execSQL("UPDATE prueba SET user='"+txtCorreo.getText().toString()+"', pass='' WHERE idcliente='"+id+"'");
-                        //Toast.makeText(getContext(),"se actualizo el user", Toast.LENGTH_LONG).show();
+
                         Intent registrar = new Intent(getContext(), Main2Activity.class);
                         startActivity(registrar);
                     }
@@ -93,7 +95,7 @@ public class ToolsFragment extends Fragment {
                         password=eso.MD5(txtpass2.getText().toString());
                         Conexion( "https://evidential-tubing.000webhostapp.com/actualizar.php");
                         bd.execSQL("UPDATE prueba SET user='"+txtCorreo.getText().toString()+"', pass='"+password+"' WHERE idcliente='"+id+"'");
-                        //Toast.makeText(getContext(),"se actualizo la contra", Toast.LENGTH_LONG).show();
+
                         Intent registrar = new Intent(getContext(), Main2Activity.class);
                         startActivity(registrar);
                     }
@@ -108,9 +110,10 @@ public class ToolsFragment extends Fragment {
     private  void cargar(){
         DataBase baseDatosAdmin = new DataBase(getContext(), "prueba",null,1);
         SQLiteDatabase bd=baseDatosAdmin.getWritableDatabase();
-
+        //selecionamos los datos del usuario en nuestra sqlite
         Cursor tabla= bd.rawQuery("SELECT * FROM prueba",null);
         tabla.moveToFirst();
+        //datos del usuario
         //1.id 2.nombre 3.apellido 4.usuario 5.password 6.correo
         id=tabla.getString(1);
         txtNom.setText(""+tabla.getString(4));
